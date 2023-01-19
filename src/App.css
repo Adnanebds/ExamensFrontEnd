@@ -55,4 +55,6 @@
   clear: both;
   display: table;
 }
-
+.add {
+  margin-left: 100px;
+}
