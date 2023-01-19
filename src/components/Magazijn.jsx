@@ -15,6 +15,7 @@ function Magazijn() {
       }
     
   const [cryptoData,setCryptoData] = useState([]);
+  
 
   useEffect(() => {
     const interval = setInterval(() => {
