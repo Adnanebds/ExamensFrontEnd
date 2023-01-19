@@ -48,9 +48,9 @@ function Magazijn() {
   
 
   return (
-    <div>
+    <div class="bg-white dark:bg-gray-900">
     <Navbar />
-    <div class="m-10">
+    <div class="m-10 bg-white dark:bg-gray-900">
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 
     <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
