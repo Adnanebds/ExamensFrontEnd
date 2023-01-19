@@ -2,10 +2,10 @@ import Navbar from './Navbar'
 import Footer from './Footer';
 function Contact() {
     return (
-        <div>
+        <div class="bg-white dark:bg-gray-900">
         <Navbar />
       
-<div class="flex justify-center items-center w-screen h-screen bg-white">
+<div class="flex justify-center items-center w-screen h-screen bg-white dark:bg-gray-900">
 	
 	<div class="container mx-auto my-4 px-4 lg:px-20">
 
