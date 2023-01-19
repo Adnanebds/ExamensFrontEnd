@@ -7,7 +7,7 @@ import Section from './Section'
 import Stats from './Stats'
 function Home() {
   return (
-    <div>
+    <div class="bg-white dark:bg-gray-900">
         <Navbar />
         <Hero />
         <Card />

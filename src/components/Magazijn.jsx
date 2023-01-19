@@ -38,7 +38,7 @@ function Magazijn() {
   }
   
   const fetchCryptoData = async (page) => {
-      const data = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&price_change_percentage=24h`);
+      const data = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8&page=${page}&sparkline=false&price_change_percentage=24h`);
       const apiResponse = await data.json();
       const sortedData = apiResponse.sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h)
       // console.log(sortedData);
@@ -48,7 +48,7 @@ function Magazijn() {
   
 
   return (
-    <div>
+    <div class="bg-white dark:bg-gray-900">
     <Navbar />
     <div class="m-10">
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -114,8 +114,14 @@ function Magazijn() {
                 {cryptocurrency.market_cap}
                 </td>
                 <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                <button class="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"></path></svg>
+                </button>
+                <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600" type="button">
+                Delete
+                </button>
                 </td>
+                
             
             
             </Reorder.Item>)}
