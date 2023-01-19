@@ -9,6 +9,8 @@ import Home from "./components/Home";
 import Login from './components/Login';
 import Registration from './components/Registration';
 import Magazijn from './components/Magazijn';
+import Contact from './components/Contact';
+import Forgot from './components/ForgotPassword'
 
 const App = () => {
   return (
@@ -18,6 +20,8 @@ const App = () => {
         <Route path="/login" element={<Login/>}/>
         <Route path="/registreren" element={<Registration/>}/>
         <Route path="/magazijn" element={<Magazijn/>}/>
+        <Route path="/contact" element={<Contact/>}/>
+        <Route path="/vergeten" element={<Forgot/>}/>
       </Routes>
     </BrowserRouter>
   )
