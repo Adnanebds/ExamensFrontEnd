@@ -1,32 +1,38 @@
 import '../App.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 
 async function loginUser(credentials) {
-    return fetch('http://localhost:8800/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(credentials)
-    })
-      .then(data => data.json())
-   }
-   
+  try {
+      const response = await axios.post('http://localhost:8800/auth/login', credentials);
+      console.log(response.data.details.tokens[0])
+      return response.data;
+  } catch (error) {
+      console.log(error);
+      throw error;
+  }
+}
 
 function Login({ setToken }) {
-    const [username, setUserName] = useState();
-    const [password, setPassword] = useState(); 
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
 
-    const handleSubmit = async e => {
-        e.preventDefault();
-        const token = await loginUser({
-          username,
-          password
-        });
-        setToken(token);
+  const handleSubmit = async e => {
+      e.preventDefault();
+      try {
+          const response = await loginUser({
+              username,
+              password
+          });
+          if(response.data.details.tokens[0]){
+            setToken(response.data.details.tokens[0]);
+          }
+      } catch (error) {
+          console.log(error);
       }
+  }
 
     return (
 <div>
