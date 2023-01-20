@@ -15,23 +15,18 @@ async function loginUser(credentials) {
   }
 }
 
-function Login({ setToken }) {
+ function Login({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
   const handleSubmit = async e => {
-      e.preventDefault();
-      try {
-          const response = await loginUser({
-              username,
-              password
-          });
-          if(response.data.details.tokens[0]){
-            setToken(response.data.details.tokens[0]);
-          }
-      } catch (error) {
-          console.log(error);
-      }
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      password
+    });
+    setToken(token);
+    localStorage.setItem('token', token);
   }
 
     return (
