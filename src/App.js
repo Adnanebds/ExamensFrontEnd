@@ -12,24 +12,18 @@ import Registration from './components/Registration';
 import Magazijn from './components/Magazijn';
 import Contact from './components/Contact';
 import Forgot from './components/ForgotPassword'
+import useToken from './scripts/useToken';
 
 
-function setToken(userToken) {
-  sessionStorage.setItem('token', JSON.stringify(userToken));
-}
 
-function getToken() {
-  const tokenString = sessionStorage.getItem('token');
-  const userToken = JSON.parse(tokenString);
-  return userToken?.token
-}
 
 function App() {
-  const token = getToken();
-
-  if(!token) {
-    return <Login setToken={setToken} />
-  }
+  
+  const { token, setToken } = useToken();
+  
+    if(!token || token === undefined) {
+      return <Login setToken={setToken} />
+      }
   return (
     <BrowserRouter>
       <Routes>

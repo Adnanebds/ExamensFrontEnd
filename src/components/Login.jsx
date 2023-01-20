@@ -3,19 +3,18 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-
 async function loginUser(credentials) {
   try {
-      const response = await axios.post('http://localhost:8800/auth/login', credentials);
-      console.log(response.data.details.tokens[0])
-      return response.data;
+    const response = await axios.post('http://localhost:8800/auth/login', credentials);
+    console.log(response.data.details.tokens[0].token);
+    return response.data.details.tokens[0].token;
   } catch (error) {
-      console.log(error);
-      throw error;
+    console.log(error);
+    throw error;
   }
 }
 
- function Login({ setToken }) {
+function Login({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
 
@@ -27,7 +26,10 @@ async function loginUser(credentials) {
     });
     setToken(token);
     localStorage.setItem('token', token);
+    console.log(localStorage.getItem('token'));
   }
+  
+
 
     return (
 <div>
