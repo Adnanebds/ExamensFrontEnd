@@ -12,18 +12,12 @@ import Registration from './components/Registration';
 import Magazijn from './components/Magazijn';
 import Contact from './components/Contact';
 import Forgot from './components/ForgotPassword'
-import useToken from './scripts/useToken';
 
 
 
 
 function App() {
   
-  const { token, setToken } = useToken();
-  
-    if(!token || token === undefined) {
-      return <Login setToken={setToken} />
-      }
   return (
     <BrowserRouter>
       <Routes>
