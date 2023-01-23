@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Navigate,} from "react-router-dom";
 
 
 const Login = () => {
@@ -42,9 +43,7 @@ const Login = () => {
 
 // if there's a user show the message below
   if (user) {
-    return <div>{user.name} is loggged in
-    <button onClick={handleLogout}>logout</button>
-    </div>;
+    return <Navigate to="/" />;
 
     
   }
