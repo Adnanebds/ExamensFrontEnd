@@ -1,7 +1,8 @@
 import '../App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 async function loginUser(credentials) {
   try {
@@ -17,6 +18,15 @@ async function loginUser(credentials) {
 function Login({ setToken }) {
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      const pages = ["/", "/magazijn", "/contact"];
+      pages.forEach((page) => navigate(page));
+    }
+  }, [isLoggedIn, navigate]);
 
   const handleSubmit = async e => {
     e.preventDefault();
@@ -27,7 +37,11 @@ function Login({ setToken }) {
     setToken(token);
     localStorage.setItem('token', token);
     console.log(localStorage.getItem('token'));
+
+    setIsLoggedIn(true);
+
   }
+
   
 
 
