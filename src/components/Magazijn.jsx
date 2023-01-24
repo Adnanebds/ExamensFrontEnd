@@ -38,9 +38,9 @@ function Magazijn() {
   }
   
   const fetchCryptoData = async (page) => {
-      const data = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8&page=${page}&sparkline=false&price_change_percentage=24h`);
+      const data = await fetch(`http://localhost:8800/products`);
       const apiResponse = await data.json();
-      const sortedData = apiResponse.sort((a,b) => b.price_change_percentage_24h - a.price_change_percentage_24h)
+      const sortedData = apiResponse.sort((a) => a.ProductName)
       // console.log(sortedData);
       setCryptoData(sortedData)
     }
@@ -81,13 +81,13 @@ function Magazijn() {
                     </div>
                 </th>
                 <th scope="col" class="px-6 py-3">
-                 Cryptocurrency
+                 ProductName
                 </th>
                 <th scope="col" class="px-6 py-3">
-                Price
+                Description
                 </th>
                 <th scope="col" class="px-6 py-3">
-                Market Cap
+                Category
                 </th>
                 <th scope="col" class="px-6 py-3">
                 Actions
@@ -105,13 +105,13 @@ function Magazijn() {
                     </div>
                 </td>
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                     {cryptocurrency.name}
+                     {cryptocurrency.Products[1].ProductName}
                 </th>
                 <td class="px-6 py-4">
-                {cryptocurrency.current_price}
+                {cryptocurrency.Desscription}
                 </td>
                 <td class="px-6 py-4">
-                {cryptocurrency.market_cap}
+                {cryptocurrency.Category}
                 </td>
                 <td class="px-6 py-4">
                 <button class="inline-flex items-center justify-center w-10 h-10 mr-2 text-gray-700 transition-colors duration-150 bg-white rounded-full focus:shadow-outline hover:bg-gray-200">
