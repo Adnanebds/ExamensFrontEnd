@@ -2,16 +2,27 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const ProductPage = () => {
-  const [products, setProducts] = useState([]);
+const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const response = await axios.get("http://localhost:8800/products");
-      setProducts(response.data);
-      console.log(response.data)
-    };
-    fetchProducts();
-  }, []);
+useEffect(() => {
+const fetchProducts = async () => {
+const token = localStorage.getItem("user");
+const config = {
+headers: {
+"Content-type": "application/json",
+//"Authorization": Bearer, ${token},
+},
+};
+try {
+const response = await axios.get("http://localhost:8800/products", config);
+setProducts(response.data.Products);
+console.log(response.data.Products);
+} catch (error) {
+console.log(error);
+}
+};
+fetchProducts();
+}, []);
 
   return (
     <div>
@@ -19,8 +30,12 @@ const ProductPage = () => {
       {products.map((product) => (
         <div key={product._id}>
           <h2>{product.ProductName}</h2>
-          <p>{product.Description}</p>
-          <p>{product.Price}</p>
+          <br></br>
+          <p>{product.Desscription}</p>
+          <br></br>
+          <p>{product.Category}</p>
+          <br></br>
+          <p>{product.EAN}</p>
         </div>
       ))}
     </div>
