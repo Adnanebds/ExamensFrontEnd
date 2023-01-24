@@ -1,0 +1,77 @@
+/* Import Tailwind CSS */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Add custom color variables */
+:root {
+  --primary-color: #00b0ff;
+  --secondary-color: #ff6f00;
+  --tertiary-color: #e53935;
+}
+
+/* Add custom styles */
+.container {
+  max-width: 1200px;
+  background-color: var(--primary-color);
+  padding: 4rem;
+  border-radius: 1rem;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+  animation: container-fade-in 1s ease-out;
+}
+
+img {
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.1);
+  animation: image-zoom-in 1s ease-out;
+}
+
+h1, h2 {
+  color: var(--secondary-color);
+  text-shadow: 2px 2px 4px #000000;
+  animation: text-slide-in 1s ease-out;
+}
+
+p {
+  color: var(--tertiary-color);
+  line-height: 2;
+  animation: text-fade-in 1s ease-out;
+}
+
+/* Animations */
+@keyframes container-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes image-zoom-in {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes text-slide-in {
+  0% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes text-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

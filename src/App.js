@@ -15,7 +15,6 @@ import Forgot from './components/ForgotPassword'
 
 
 
-
 function App() {
   
   return (
@@ -27,6 +26,7 @@ function App() {
         <Route path="/magazijn" element={<Magazijn/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/vergeten" element={<Forgot/>}/>
+
       </Routes>
     </BrowserRouter>
   )
