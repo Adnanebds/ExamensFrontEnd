@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-function Registration() {
+const Registration = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("vrijwilliger");
-
+  const [isRegistered, setIsRegistered] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -26,16 +27,19 @@ function Registration() {
       .then((data) => {
         console.log("User registered successfully!");
         console.log(data);
+        setIsRegistered(true);
+        setErrorMessage("")
       })
       .catch((error) => {
         console.log("Error registering user: ", error);
+        setErrorMessage("Error registering user")
       });
   };
 
   return (
     <section class="bg-gray-50 dark:bg-gray-900">
   <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-      <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+      <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <img class="w-8 h-8 mr-2" src={ require('../images/fork.png') } alt="logo"/>
           Rijnburg    
       </a>
@@ -66,6 +70,7 @@ function Registration() {
                       Allready registed <a href="/login" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign in</a>
                   </p>
               </form>
+              {isRegistered ? <p style={{ color: "green" }}>User created!</p> : <p style={{ color: "red" }}>{errorMessage}</p>}
           </div>
       </div>
   </div>
